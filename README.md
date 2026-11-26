@@ -1,62 +1,43 @@
 <!--
   GitHub profile README · github.com/ImperialKoi
   ──────────────────────────────────────────────────────────────────────────
-  Rendered at the top of your profile when: the repo is named exactly
-  ImperialKoi, the repo is public, and this file is README.md at the root.
+  The profile itself is the scroll page in this repo: index.html + site/,
+  with the ascii.rest "ocean sunset" and "deep reef" scenes drawn on a canvas
+  behind the content. A scroll-linked water line lifts the sunset away and
+  leaves you in the reef.
 
-  The banner is rendered by the ascii-sharks ocean engine (boids, hunting
-  sharks, glyph rendering), not hand-drawn. To change it:
-    1. edit PROFILE in scripts/render-ocean.mjs
-    2. npm install
-    3. npm run banner
-  -> assets/ocean-light.gif + assets/ocean-dark.gif (+ .png posters)
+  GitHub strips CSS, script and style from a README, so the background cannot
+  live here — this file is the fallback, and the page is the real thing:
+      npm install && npm run dev     # local
+      npm run build                  # dist/, publish with GitHub Pages
+  → https://imperialkoi.github.io
 
-  Replace every YOUR_... placeholder below before pushing.
-  Images go in ./assets and are referenced as ./assets/file.png
+  Replace every YOUR_... placeholder.
 -->
 
-<div align="center">
+<h1 align="center">IMPERIALKOI</h1>
 
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/ocean-dark.gif" />
-    <img src="./assets/ocean-light.gif" alt="Animated ASCII shark ocean behind the name ImperialKoi" width="100%" />
-  </picture>
+<p align="center">
+  builds tools that stay out of the way<br />
+  <sub>YOUR ROLE &nbsp;·&nbsp; YOUR LOCATION</sub>
+</p>
 
-</div>
+<p align="center"><a href="https://imperialkoi.github.io"><strong>→ open the live profile</strong></a></p>
+
+---
 
 ## About
 
 I'm **YOUR NAME**, a YOUR ROLE focused on YOUR FOCUS AREA. I like YOUR KIND OF WORK —
 currently building **YOUR CURRENT PROJECT** and learning **YOUR CURRENT TOPIC**.
 
-YOUR DOMAIN is where most of my work lives, and I care about YOUR PRINCIPLE
-(small tools that do one thing well, readable code, fast feedback loops).
+YOUR DOMAIN is where most of my work lives, and I care about YOUR PRINCIPLE:
+small tools that do one thing well, readable code, fast feedback loops.
 
-## Tech I work with
+## Stack
 
-**Languages**
-
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
-
-**Frameworks & libraries**
-
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-
-**Tools & infrastructure**
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-
-<!-- Delete what you don't use. Pattern:
-     ![Label](https://img.shields.io/badge/LABEL-HEXCOLOR?style=flat-square&logo=SLUG&logoColor=white)
-     Logo slugs: https://simpleicons.org -->
+`TypeScript` · `JavaScript` · `Python` · `Go` · `React` · `Node` · `Next.js` ·
+`PostgreSQL` · `Docker` · `Git` · `Linux`
 
 ## Featured projects
 
@@ -71,10 +52,9 @@ YOUR DOMAIN is where most of my work lives, and I care about YOUR PRINCIPLE
 ## Contact
 
 <p align="center">
-  <a href="mailto:you@example.com"><img src="https://img.shields.io/badge/Email-you%40example.com-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://www.linkedin.com/in/YOUR-HANDLE"><img src="https://img.shields.io/badge/LinkedIn-YOUR%20HANDLE-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://x.com/YOUR-HANDLE"><img src="https://img.shields.io/badge/X-%40YOUR--HANDLE-000000?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
-  <a href="https://YOUR-DOMAIN.com"><img src="https://img.shields.io/badge/Website-YOUR--DOMAIN-1F6FEB?style=flat-square&logo=googlechrome&logoColor=white" alt="Website" /></a>
+  <a href="mailto:you@example.com">email</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/YOUR-HANDLE">linkedin</a> &nbsp;·&nbsp;
+  <a href="https://x.com/YOUR-HANDLE">x</a> &nbsp;·&nbsp;
+  <a href="https://YOUR-DOMAIN.com">website</a> &nbsp;·&nbsp;
+  <a href="https://github.com/ImperialKoi">github</a>
 </p>
-
-<div align="center"><sub>YOUR SIGN-OFF LINE — e.g. "Always happy to talk about YOUR TOPIC."</sub></div>

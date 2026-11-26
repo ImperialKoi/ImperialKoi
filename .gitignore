@@ -1,0 +1,7 @@
+node_modules/
+.cache/
+scripts/preview.html
+
+# local checkouts of the ascii engines the banner is rendered with
+ascii/
+ascii-animated-sharks/

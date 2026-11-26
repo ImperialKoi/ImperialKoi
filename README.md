@@ -1,37 +1,26 @@
 <!--
-  ═══════════════════════════════════════════════════════════════════
   GitHub profile README · github.com/ImperialKoi
-  ═══════════════════════════════════════════════════════════════════
+  ──────────────────────────────────────────────────────────────────────────
+  Rendered at the top of your profile when: the repo is named exactly
+  ImperialKoi, the repo is public, and this file is README.md at the root.
 
-  This file is rendered at the top of your profile as long as all three are true:
-    • the repository is named exactly  ImperialKoi
-    • the repository is public
-    • this file is README.md in the repository root
+  The banner is rendered by the ascii-sharks ocean engine (boids, hunting
+  sharks, glyph rendering), not hand-drawn. To change it:
+    1. edit PROFILE in scripts/render-ocean.mjs
+    2. npm install
+    3. npm run banner
+  -> assets/ocean-light.gif + assets/ocean-dark.gif (+ .png posters)
 
-  Before pushing:
-    1. Replace every YOUR_... placeholder (search for "YOUR_").
-    2. Delete any badge, row or section you don't need.
-    3. Put images in ./assets and reference them as ./assets/file.png
-       (GitHub only tracks files, so keep assets/.gitkeep until you add real images.)
-
-  The header avatar below is a live URL — GitHub serves your avatar at
-  https://github.com/<username>.png, so nothing needs to be uploaded for it.
-  ═══════════════════════════════════════════════════════════════════
+  Replace every YOUR_... placeholder below before pushing.
+  Images go in ./assets and are referenced as ./assets/file.png
 -->
 
 <div align="center">
 
-  <img src="https://github.com/ImperialKoi.png?size=200" width="110" height="110" alt="ImperialKoi" />
-
-  <h1>YOUR NAME</h1>
-
-  <p><strong>YOUR TAGLINE</strong></p>
-  <p>YOUR LOCATION &nbsp;·&nbsp; YOUR AVAILABILITY</p>
-
-  <!-- Prefer a wide banner instead of the avatar? Drop assets/banner.png into the repo
-       and replace the <img> above with:
-       <img src="./assets/banner.png" alt="YOUR NAME" width="100%" />
-  -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/ocean-dark.gif" />
+    <img src="./assets/ocean-light.gif" alt="Animated ASCII shark ocean behind the name ImperialKoi" width="100%" />
+  </picture>
 
 </div>
 
@@ -40,8 +29,8 @@
 I'm **YOUR NAME**, a YOUR ROLE focused on YOUR FOCUS AREA. I like YOUR KIND OF WORK —
 currently building **YOUR CURRENT PROJECT** and learning **YOUR CURRENT TOPIC**.
 
-I mostly work in YOUR DOMAIN / STACK, and I care about YOUR PRINCIPLE (for example:
-small tools that do one thing well, readable code, fast feedback loops).
+YOUR DOMAIN is where most of my work lives, and I care about YOUR PRINCIPLE
+(small tools that do one thing well, readable code, fast feedback loops).
 
 ## Tech I work with
 
@@ -65,9 +54,9 @@ small tools that do one thing well, readable code, fast feedback loops).
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 
-<!-- Delete the badges you don't use. Format:
+<!-- Delete what you don't use. Pattern:
      ![Label](https://img.shields.io/badge/LABEL-HEXCOLOR?style=flat-square&logo=SLUG&logoColor=white)
-     Logo slugs live at https://simpleicons.org -->
+     Logo slugs: https://simpleicons.org -->
 
 ## Featured projects
 

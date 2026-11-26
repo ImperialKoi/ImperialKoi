@@ -1,0 +1,30 @@
+{
+  "name": "imperialkoi-profile",
+  "version": "1.0.0",
+  "description": "GitHub profile README for ImperialKoi, with an animated ASCII shark ocean banner rendered by ascii-sharks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "banner": "node scripts/render-ocean.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImperialKoi/ImperialKoi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ImperialKoi/ImperialKoi/issues"
+  },
+  "homepage": "https://github.com/ImperialKoi/ImperialKoi#readme",
+  "dependencies": {
+    "@napi-rs/canvas": "^1.2.1",
+    "gifenc": "^1.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "private": "true"
+}

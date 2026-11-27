@@ -1,7 +1,7 @@
 /**
  * Drives the background: one fixed canvas, the sunset as its base and the reef
- * dissolved in from the water line down. Both pieces animate continuously; the
- * scroll only moves the dissolve up the frame.
+ * dissolved in from the water line down. Both pieces animate continuously, and
+ * the scroll lifts the sunset while the reef's water line rises with it.
  */
 
 import { paintBlend } from './scene'
@@ -25,15 +25,21 @@ function resize() {
 }
 
 /**
- * Where the reef's surface sits, and how long the fade into it runs. At rest it
- * is on the sunset's horizon, so the sun's sea is the first water you meet; by
- * the time the first screen has scrolled away the reef has risen most of the
- * way up the frame and you are inside it.
+ * The whole transition is one scroll: the sunset rises up the frame and the
+ * reef's surface rises with it, so the water you are looking at changes from
+ * the sun's sea to the reef rather than the reef wiping a fixed picture. The
+ * fade band stays long, so the two waters overlap instead of meeting at a line.
  */
 function waterLine(scrollY: number) {
   const p = Math.min(1, Math.max(0, scrollY / (vh * 1.15)))
   const eased = p * p * (3 - 2 * p)
-  return { line: vh * (0.66 - 0.48 * eased), band: vh * 0.46 }
+  return {
+    line: vh * (0.66 - 0.48 * eased),
+    band: vh * 0.46,
+    // the sunset travels almost with the reef line, so its horizon and the
+    // reef's surface rise together through the crossing
+    shift: vh * 0.42 * eased,
+  }
 }
 
 function draw(t: number) {
@@ -41,8 +47,8 @@ function draw(t: number) {
   const rect = canvas.getBoundingClientRect()
   if (Math.round(rect.width) !== vw || Math.round(rect.height) !== vh) resize()
 
-  const { line, band } = waterLine(window.scrollY)
-  paintBlend(ctx, t, vw, vh, line, band, dpr)
+  const { line, band, shift } = waterLine(window.scrollY)
+  paintBlend(ctx, t, vw, vh, line, band, dpr, shift)
 }
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')

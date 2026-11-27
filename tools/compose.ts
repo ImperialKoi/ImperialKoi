@@ -11,6 +11,7 @@ const q = new URLSearchParams(location.search)
 const shot = q.get('shot') ?? 'both'
 const LINE = Number(q.get('line') ?? 0.82)
 const BAND = Number(q.get('band') ?? 0.34)
+const SHIFT = Number(q.get('shift') ?? 0) // fraction of the frame the sunset has risen
 const T = Number(q.get('t') ?? 14.2) // a settled moment, not frame zero
 
 function draw(t = T) {
@@ -23,7 +24,7 @@ function draw(t = T) {
 
   if (shot === 'sunset') paintSunset(ctx, t, vw, vh)
   else if (shot === 'reef') paintReef(ctx, t, vw, vh)
-  else paintBlend(ctx, t, vw, vh, vh * LINE, vh * BAND, dpr)
+  else paintBlend(ctx, t, vw, vh, vh * LINE, vh * BAND, dpr, vh * SHIFT)
 }
 
 /** Fingerprint of the pixels in a band, for checking that something moves. */

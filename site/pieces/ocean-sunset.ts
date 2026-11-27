@@ -287,7 +287,12 @@ export default function oceanSunset(): Frame {
   const SKR = new Float32Array(HZ * W), SKG = new Float32Array(HZ * W), SKB = new Float32Array(HZ * W);
 
   return (t, { color } = {}) => {
-    const dUp = t * 0.9, dLo = t * 1.7;
+    // the cloud fields drift with the wind; a touch faster than the source so
+    // the sky visibly moves while you read, not just the water below it
+    const dUp = t * 2.7, dLo = t * 2.6;
+    // the sun is not pinned either: it rises and settles a couple of cells,
+    // and its light on the water goes with it
+    const sunY = SUN[1] + 2.2 * Math.sin(t * 0.15);
     for (let r = 0; r < HZ; r++) {
       const y = r + 0.5;
       for (let x = 0; x < W; x++) {
@@ -295,7 +300,7 @@ export default function oceanSunset(): Frame {
         const s = k * 3;
         let cr = sky[s], cg = sky[s + 1], cb = sky[s + 2];
         const dx = x + 0.5 - SUN[0];
-        const dy = y - SUN[1];
+        const dy = y - sunY;
         let disc = 0;
         const ds = Math.sqrt(dx * dx + (dy / 0.9) ** 2);
         if (ds < SR + 0.6) {

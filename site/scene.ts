@@ -6,10 +6,10 @@
  * colour: at a couple of hundred columns the glyphs are sub-pixel anyway, and
  * squares sort into one fillStyle per palette entry.
  *
- * The composite: the sunset is the base layer, full frame, always moving. The
- * reef is drawn on its own layer with its own ground and masked by a long
- * vertical gradient, so the bottom of the sunset's sea slowly becomes reef
- * instead of meeting it at a line.
+ * The composite: the sunset is the base layer, full frame, always moving, and
+ * the scroll lifts it up the frame. The reef is drawn on its own layer with
+ * its own ground and masked by a long vertical gradient, so the bottom of the
+ * sunset's sea slowly becomes reef instead of meeting it at a line.
  */
 
 import oceanSunset, { meta as sunsetMeta } from './pieces/ocean-sunset'
@@ -144,8 +144,9 @@ function layer(dpr: number, vw: number, vh: number) {
 
 /**
  * The background: sunset underneath, reef dissolved in from `line` down over
- * `band` pixels. Both layers are animated; only the dissolve edge moves with
- * the scroll.
+ * `band` pixels. `shift` lifts the sunset up the frame with the scroll, so the
+ * water line climbs through a moving picture rather than a pinned one. Both
+ * layers are animated on their own as well.
  */
 export function paintBlend(
   ctx: CanvasRenderingContext2D,
@@ -155,6 +156,7 @@ export function paintBlend(
   line: number,
   band: number,
   dpr: number,
+  shift = 0,
 ) {
   const top = line - band * 0.45
   if (top >= vh) {
@@ -166,7 +168,12 @@ export function paintBlend(
   const covered = Math.min(vh, line + band * 0.55)
   ctx.fillStyle = sunsetMeta.ground
   ctx.fillRect(0, 0, vw, covered)
-  paint(ctx, sunset, t, cover(vw, vh), vw, 0, covered)
+  // draw the sunset already lifted: row `shift` of the scene is what sits at
+  // the top of the frame, and the seabed it uncovers is under the reef below
+  ctx.save()
+  ctx.translate(0, -shift)
+  paint(ctx, sunset, t, cover(vw, vh), vw, shift, vh)
+  ctx.restore()
 
   const l = layer(dpr, vw, vh)
   const lc = l.ctx

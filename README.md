@@ -1,19 +1,25 @@
 <!--
   GitHub profile README · github.com/ImperialKoi
   ──────────────────────────────────────────────────────────────────────────
-  The profile itself is the scroll page in this repo: index.html + site/,
+  The animated version of this page lives in the repo: index.html + site/,
   with the ascii.rest "ocean sunset" and "deep reef" scenes drawn on a canvas
   behind the content. A scroll-linked water line lifts the sunset away and
   leaves you in the reef.
 
-  GitHub strips CSS, script and style from a README, so the background cannot
-  live here — this file is the fallback, and the page is the real thing:
-      npm install && npm run dev     # local
-      npm run build                  # dist/, publish with GitHub Pages
-  → https://imperialkoi.github.io
+  GitHub strips CSS, script and style from a README, so the image at the top
+  is a still frame rendered from those same scenes (assets/profile-hero.png).
+  For the interactive page:
+      npm install && npm run dev
+      npm run build     # dist/
 
   Replace every YOUR_... placeholder.
 -->
+
+<p align="center">
+  <a href="https://github.com/ImperialKoi/ImperialKoi">
+    <img src="assets/profile-hero.png" alt="An ascii sunset over the sea, dissolving into a coral reef" width="100%" />
+  </a>
+</p>
 
 <h1 align="center">IMPERIALKOI</h1>
 
@@ -21,8 +27,6 @@
   builds tools that stay out of the way<br />
   <sub>YOUR ROLE &nbsp;·&nbsp; YOUR LOCATION</sub>
 </p>
-
-<p align="center"><a href="https://imperialkoi.github.io"><strong>→ open the live profile</strong></a></p>
 
 ---
 
@@ -58,3 +62,5 @@ small tools that do one thing well, readable code, fast feedback loops.
   <a href="https://YOUR-DOMAIN.com">website</a> &nbsp;·&nbsp;
   <a href="https://github.com/ImperialKoi">github</a>
 </p>
+
+<p align="center"><sub>ocean sunset &amp; deep reef — ascii.rest pieces, drawn on canvas</sub></p>

@@ -3,7 +3,7 @@
  * frame each, at /tools/compose.html?shot=sunset|reef|both.
  */
 
-import { paintBlend, paintReef, paintSunset } from '../site/scene'
+import { composeBackground, paintBlend, paintReef, paintSunset } from '../site/scene'
 
 const canvas = document.querySelector<HTMLCanvasElement>('#c')!
 const ctx = canvas.getContext('2d', { alpha: false })!
@@ -48,5 +48,15 @@ window.addEventListener('resize', () => draw())
 ;(window as unknown as { __shot: (t?: number) => unknown }).__shot = (t?: number) => {
   draw(t ?? T)
   return { top: digest(0, 0.35), bottom: digest(0.75, 1), full: digest(0, 1) }
+}
+
+// dev-only: time the scroll composite on the cached layers, in ms a frame
+;(window as unknown as { __compose: (n?: number) => number }).__compose = (n = 10) => {
+  const css = canvas.getBoundingClientRect()
+  const a = performance.now()
+  for (let i = 0; i < n; i++) {
+    composeBackground(ctx, css.width, css.height, css.height * LINE, css.height * BAND, css.height * SHIFT)
+  }
+  return +((performance.now() - a) / n).toFixed(2)
 }
 document.documentElement.dataset.ready = '1'

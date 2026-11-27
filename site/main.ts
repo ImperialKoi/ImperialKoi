@@ -4,7 +4,7 @@
  * the scroll lifts the sunset while the reef's water line rises with it.
  */
 
-import { paintBlend } from './scene'
+import { composeBackground, renderBackground } from './scene'
 
 const canvas = document.querySelector<HTMLCanvasElement>('#ocean')!
 const ctx = canvas.getContext('2d', { alpha: false })!
@@ -48,17 +48,28 @@ function draw(t: number) {
   if (Math.round(rect.width) !== vw || Math.round(rect.height) !== vh) resize()
 
   const { line, band, shift } = waterLine(window.scrollY)
-  paintBlend(ctx, t, vw, vh, line, band, dpr, shift)
+  renderBackground(t, vw, vh, dpr)
+  composeBackground(ctx, vw, vh, line, band, shift)
+}
+
+/** Re-blit the cached scenes for the current scroll, without repainting them. */
+function compose() {
+  const { line, band, shift } = waterLine(window.scrollY)
+  composeBackground(ctx, vw, vh, line, band, shift)
 }
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
 let raf = 0
 let last = 0
+let lastScroll = 0
 
 function loop(now: number) {
   const t = now / 1000
+  // while the page is moving, leave the art alone: the cached composite
+  // follows the scroll at frame rate, and the scene resumes when it settles
+  const scrolling = now - lastScroll < 160
   // the pieces are authored at 15fps; there is nothing to gain above that
-  if (t - last >= 1 / 15) {
+  if (!scrolling && t - last >= 1 / 15) {
     last = t
     draw(t)
   }
@@ -80,6 +91,21 @@ window.addEventListener('resize', () => {
 })
 
 reduce.addEventListener('change', start)
+
+// the scene paints at 15fps, but the scroll gets a fresh composite every frame
+let pending = 0
+window.addEventListener(
+  'scroll',
+  () => {
+    lastScroll = performance.now()
+    if (pending || reduce.matches) return
+    pending = requestAnimationFrame(() => {
+      pending = 0
+      compose()
+    })
+  },
+  { passive: true },
+)
 
 resize()
 // one frame synchronously, so the page is never blank while rAF is suspended

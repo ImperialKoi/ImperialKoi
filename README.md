@@ -6,8 +6,9 @@
   behind the content. A scroll-linked water line lifts the sunset away and
   leaves you in the reef.
 
-  GitHub strips CSS, script and style from a README, so the image at the top
-  is a still frame rendered from those same scenes (assets/profile-hero.png).
+  GitHub strips CSS, script and style from a README, so the hero at the top is
+  an animated GIF rendered from those same scenes (assets/profile-hero.gif,
+  1000x500, 72 frames). assets/profile-hero.png is the same rest frame as a still.
   For the interactive page:
       npm install && npm run dev
       npm run build     # dist/
@@ -17,7 +18,7 @@
 
 <p align="center">
   <a href="https://github.com/ImperialKoi/ImperialKoi">
-    <img src="assets/profile-hero.png" alt="An ascii sunset over the sea, dissolving into a coral reef" width="100%" />
+    <img src="assets/profile-hero.gif" alt="An animated ascii sunset over the sea, lifting into a coral reef" width="100%" />
   </a>
 </p>
 
